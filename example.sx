@@ -1,0 +1,16 @@
+nombre = "Jared";
+edad = 0.7352;
+numero = -2;
+
+// Esto es un comentario
+
+/*
+Este
+es
+un
+comentario
+multilinea
+*/
+
+resultado = 3 / 3;
+resultado = resultado * numero * 3 + -1;
