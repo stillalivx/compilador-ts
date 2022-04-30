@@ -1,5 +1,7 @@
 # Compilador en TypeScript
 
+Compilador creado en TypeScript
+
 ## Instalación
 
 ### Node
@@ -14,7 +16,7 @@ Es neceario instalar [Node](https://nodejs.org/) para correr el código
 
 Instala todas las dependencias para correr el proyecto
 
-## Correr
+## Ejecución
 
 ### Durante el desarrollo
 
