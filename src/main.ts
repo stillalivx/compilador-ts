@@ -2,10 +2,13 @@ import { readFile } from 'fs/promises';
 import 'colors';
 
 import createTreeStructure from './utils/createTreeStructure';
+import createTextInterCode from './utils/createTextInterCode';
 
 import analisisLexico from './fases/analisisLexico';
 import analisisSintaxis from './fases/analisisSintaxis';
 import analisisSemantico from './fases/analisisSemantico';
+import generacionCodigoIntermedio from './fases/generacionCodigoIntermedio';
+import optimizacion from './fases/optimizacion';
 
 let path = process.argv[2] as string; // Toma la ruta del archivo que se va a compilar
 
@@ -45,6 +48,18 @@ if (!path.endsWith('.sx')) {
 
   console.log('El arbol binario es valido. \u2714'.green);
   
+  const resFase4 = generacionCodigoIntermedio(resFase2);
+
+  console.log('\nFASE 4 - GENERACION DE CODIGO INTERMEDIO\n'.blue);
+  console.log(createTextInterCode(resFase4));
+
+  const resFase5 = optimizacion(resFase4);
+  
+  console.log('\nFASE 5 - OPTIMIZACIÓN\n'.blue);
+  console.log(createTextInterCode(resFase5));
+
+  console.log('\nFASE 6 - TABLA DE SIMBOLOS\n'.blue);
+  console.log(resFase4);
 })().catch((e) => {
   console.log(e.toString().red);
 });

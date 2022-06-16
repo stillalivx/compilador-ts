@@ -97,7 +97,7 @@ function analizarNodo(nodo: Node, parent?: Node): boolean {
           throw `El operador ${parent.valor} necesita dos valores para operar`;
         }
   
-        if (parent.right.token !== parent.left.token) {
+        if (parent.left.token === TOKENS.VALOR_STR || parent.right.token === TOKENS.VALOR_STR) {
           throw `El operador ${parent.valor} necesita dos valores numericos para operar`;
         }
       } else if (parent.token === TOKENS.OP_RESTA) {

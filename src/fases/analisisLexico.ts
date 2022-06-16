@@ -83,7 +83,7 @@ export default function analisisLexico(content: string): TokenValue[] {
             throw `El nombre de variable no puede iniciar con un número. Linea ${line + 1}`;
           }
 
-          tokens.push({ token: TOKENS.VALOR_NUM, valor: isValNumOrIdent[1] }); // En caso contrario, crea el token VAL_NUM junto con su valor
+          tokens.push({ token: TOKENS.VALOR_NUM, valor: parseFloat(isValNumOrIdent[1]) }); // En caso contrario, crea el token VAL_NUM junto con su valor
         } else {
           tokens.push({ token: TOKENS.IDENT, valor: isValNumOrIdent[1] }); // En caso contrario, crea el token IDENT junto con su valor
         }
@@ -92,7 +92,7 @@ export default function analisisLexico(content: string): TokenValue[] {
         continue;
       }
 
-      const isOperator = subStmt.match(/^\s*([=|*|\-|+|/])\s*/); // Se cumple si contiene caracteres de operaciones
+      const isOperator = subStmt.match(/^\s*([=|*|\-|+|\/])\s*/); // Se cumple si contiene caracteres de operaciones
 
       if (isOperator) { 
         if (isOperator[1] === '=') {
